@@ -1,6 +1,13 @@
+import {Route, Switch} from 'react-router-dom'
+
 import './App.css'
+import LoginForm from './components/LoginPage'
 
 // write your code here
-const App = () => <div>Hello World</div>
+const App = () => (
+  <Switch>
+    <Route exact path="/login" component={LoginForm} />
+  </Switch>
+)
 
 export default App
