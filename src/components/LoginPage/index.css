@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Inter:wght@100..900&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 /* Styling Login Form*/
 
 .login-form {
@@ -29,6 +33,7 @@
 
   border: solid 2px #18181880;
   border-radius: 8px;
+  box-shadow: 0 4px 16px 4px #1e293b;
 }
 @media (min-width: 768px) {
   .inner-container {
@@ -46,7 +51,6 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  border: solid 1px #1db954;
 }
 .input-card {
   width: 100%;
@@ -111,6 +115,8 @@
   gap: 8px;
   padding: 5px 12px;
   align-self: center;
+  cursor: pointer;
+  transition: 1s all;
 }
 .err-msg {
   font-family: 'Inter';

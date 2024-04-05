@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 
 import './index.css'
@@ -7,11 +8,11 @@ class LoginForm extends Component {
   state = {username: '', password: '', errMsg: ''}
 
   onChangeUsername = event => {
-    this.setState({username: event.target.value})
+    this.setState({username: event.target.value, errMsg: ''})
   }
 
   onChangePassword = event => {
-    this.setState({password: event.target.value})
+    this.setState({password: event.target.value, errMsg: ''})
   }
 
   authorizeUser = async event => {
@@ -100,13 +101,19 @@ class LoginForm extends Component {
   }
 
   render() {
+    const token = Cookies.get('jwt_token')
+
+    if (token !== undefined) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div className="login-form" data-testid="loginForm">
         <div className="inner-container">
           <div className="app-details-card">
             <img
               src="https://res.cloudinary.com/dgga8cymk/image/upload/v1712240724/1Spotify/Login/remix-logo-sm.png"
-              alt="app-logo"
+              alt="login website logo"
               className="app-logo"
             />
             <h2 className="app-name">Spotify Remix</h2>
