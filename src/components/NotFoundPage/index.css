@@ -10,11 +10,13 @@
   justify-content: center;
   gap: 16px;
   align-items: center;
+  position: absolute;
 }
 @media (min-width: 768px) {
   .not-found-bg {
     width: 90%;
     height: 100vh;
+    right: 0;
   }
 }
 
