@@ -1,0 +1,11 @@
+.editors-pick {
+  padding: 0;
+
+  display: flex;
+  gap: 10px;
+
+  overflow: auto;
+  scroll-behavior: unset;
+  font-family: 'Inter';
+  color: #fcffff;
+}
