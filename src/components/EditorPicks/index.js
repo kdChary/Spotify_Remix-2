@@ -2,6 +2,8 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 
 import './index.css'
+import Loading from '../LoadingView'
+import HomeItem from '../HomeItem'
 
 const apiStateConst = {
   initial: 'INITIAL',
@@ -11,7 +13,7 @@ const apiStateConst = {
 }
 
 class EditorPicks extends Component {
-  state = {playList: {}, fetchStatus: apiStateConst.initial}
+  state = {playList: [], fetchStatus: apiStateConst.initial}
 
   componentDidMount() {
     this.getEditorPicks()
@@ -41,6 +43,8 @@ class EditorPicks extends Component {
 
       const data = await response.json()
       const newData = data.playlists.items.map(item => this.modifyData(item))
+
+      this.setState({playList: newData})
       console.log(newData)
     } else {
       this.setState({fetchStatus: apiStateConst.failure})
@@ -48,12 +52,42 @@ class EditorPicks extends Component {
     }
   }
 
-  render() {
+  renderPlaylist = () => {
+    const {playList} = this.state
+
     return (
       <ul className="editors-pick">
-        <li>Here comes the list...</li>
+        {playList.map(item => (
+          <HomeItem key={item.id} playListData={item} type="playlist" />
+        ))}
       </ul>
     )
+  }
+
+  renderEditorPicks = () => {
+    const {fetchStatus} = this.state
+
+    switch (fetchStatus) {
+      case apiStateConst.inProgress:
+        return <Loading />
+
+      case apiStateConst.success:
+        return <>{this.renderPlaylist()}</>
+
+      case apiStateConst.failure:
+        return (
+          <>
+            <h1>hello!!</h1>
+          </>
+        )
+
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return <>{this.renderEditorPicks()}</>
   }
 }
 
