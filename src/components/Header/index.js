@@ -15,12 +15,13 @@ const Header = props => {
     const {history} = props
     history.replace('/login')
   }
+
   const renderHeader = () => (
     <nav className="navbar-sm" data-testid="navbarSm">
       <Link to="/" className="link-item">
         <img
           src="https://res.cloudinary.com/dgga8cymk/image/upload/v1712240724/1Spotify/Login/remix-logo-sm.png"
-          alt="website app logo"
+          alt="website logo"
           className="nav-img"
         />
       </Link>
@@ -33,7 +34,7 @@ const Header = props => {
       <Link to="/" className="link-item">
         <img
           src="https://res.cloudinary.com/dgga8cymk/image/upload/v1712240724/1Spotify/Login/remix-logo-sm.png"
-          alt="website app logo"
+          alt="website logo"
           className="nav-img"
         />
       </Link>
@@ -44,6 +45,9 @@ const Header = props => {
         data-testid="logoutBtn"
       >
         <RiLogoutCircleRLine />
+      </button>
+      <button type="button" onClick={logOut} className="hide">
+        Logout
       </button>
     </nav>
   )

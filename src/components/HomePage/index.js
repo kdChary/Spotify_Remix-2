@@ -4,6 +4,9 @@ import './index.css'
 import Header from '../Header'
 import EditorPicks from '../EditorPicks'
 import Categories from '../Categories'
+import NewReleases from '../NewReleases'
+
+// TODO: add failure view
 
 class Home extends Component {
   state = {}
@@ -22,6 +25,9 @@ class Home extends Component {
           </div>
           <div className="playlist-container">
             <Categories />
+          </div>
+          <div className="playlist-container">
+            <NewReleases />
           </div>
         </div>
       </>

@@ -12,23 +12,23 @@ const apiStateConst = {
   failure: 'FAILURE',
 }
 
-class Categories extends Component {
+class NewReleases extends Component {
   state = {playList: [], fetchStatus: apiStateConst.initial}
 
   componentDidMount() {
-    this.getEditorPicks()
+    this.getNewReleases()
   }
 
   modifyData = data => ({
     id: data.id,
     name: data.name,
-    imageUrl: data.icons[0].url,
+    imageUrl: data.images[0].url,
   })
 
-  getEditorPicks = async () => {
+  getNewReleases = async () => {
     this.setState({fetchStatus: apiStateConst.inProgress})
 
-    const url = ' https://apis2.ccbp.in/spotify-clone/categories'
+    const url = ' https://apis2.ccbp.in/spotify-clone/new-releases'
     const token = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -42,10 +42,10 @@ class Categories extends Component {
       this.setState({fetchStatus: apiStateConst.success})
 
       const data = await response.json()
-      const newData = data.categories.items.map(item => this.modifyData(item))
+      const newData = data.albums.items.map(item => this.modifyData(item))
 
       this.setState({playList: newData})
-      //   console.log(newData)
+      //   console.log(data)
     } else {
       this.setState({fetchStatus: apiStateConst.failure})
       console.log('error')
@@ -57,18 +57,18 @@ class Categories extends Component {
 
     return (
       <>
-        <h5 className="playlist-heading">Genres & Moods</h5>
+        <h5 className="playlist-heading">New Releases</h5>
 
-        <ul className="editors-pick">
+        <ul className="new-releases">
           {playList.map(item => (
-            <HomeItem key={item.id} playListData={item} type="category" />
+            <HomeItem key={item.id} playListData={item} type="album" />
           ))}
         </ul>
       </>
     )
   }
 
-  renderEditorPicks = () => {
+  renderNewReleases = () => {
     const {fetchStatus} = this.state
 
     switch (fetchStatus) {
@@ -91,8 +91,8 @@ class Categories extends Component {
   }
 
   render() {
-    return <>{this.renderEditorPicks()}</>
+    return <>{this.renderNewReleases()}</>
   }
 }
 
-export default Categories
+export default NewReleases

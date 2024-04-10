@@ -66,3 +66,6 @@
   font-size: 31px;
   color: #1db;
 }
+.hide {
+  display: none;
+}
