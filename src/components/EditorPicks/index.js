@@ -56,11 +56,15 @@ class EditorPicks extends Component {
     const {playList} = this.state
 
     return (
-      <ul className="editors-pick">
-        {playList.map(item => (
-          <HomeItem key={item.id} playListData={item} type="playlist" />
-        ))}
-      </ul>
+      <>
+        <h3 className="playlist-heading">Editor Picks</h3>
+
+        <ul className="editors-pick">
+          {playList.map(item => (
+            <HomeItem key={item.id} playListData={item} type="playlist" />
+          ))}
+        </ul>
+      </>
     )
   }
 
