@@ -6,17 +6,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 23px;
 
   overflow: auto;
-  scrollbar-color: transparent;
+  scrollbar-color: dark;
   scroll-behavior: smooth;
 
   font-family: 'Assistant';
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .playlist-container {
-  /* width: 90%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -36,4 +37,8 @@
     right: 0;
     left: 10vw;
   }
+}
+
+.home-bg::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }

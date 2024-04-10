@@ -1,4 +1,4 @@
-.editors-pick {
+.category-pick {
   width: 100%;
   height: 210px;
   padding: 0;
@@ -17,10 +17,10 @@
 }
 
 @media (min-width: 768px) {
-  .editors-pick {
+  .category-pick {
     height: 270px;
   }
 }
-.editors-pick::-webkit-scrollbar {
+.category-pick::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }

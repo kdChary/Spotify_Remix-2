@@ -12,23 +12,23 @@ const apiStateConst = {
   failure: 'FAILURE',
 }
 
-class EditorPicks extends Component {
+class Categories extends Component {
   state = {playList: [], fetchStatus: apiStateConst.initial}
 
   componentDidMount() {
-    this.getCategoriesPicks()
+    this.getEditorPicks()
   }
 
   modifyData = data => ({
     id: data.id,
     name: data.name,
-    imageUrl: data.images[0].url,
+    imageUrl: data.icons[0].url,
   })
 
-  getCategoriesPicks = async () => {
+  getEditorPicks = async () => {
     this.setState({fetchStatus: apiStateConst.inProgress})
 
-    const url = ' https://apis2.ccbp.in/spotify-clone/featured-playlists'
+    const url = ' https://apis2.ccbp.in/spotify-clone/categories'
     const token = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -42,7 +42,7 @@ class EditorPicks extends Component {
       this.setState({fetchStatus: apiStateConst.success})
 
       const data = await response.json()
-      const newData = data.playlists.items.map(item => this.modifyData(item))
+      const newData = data.categories.items.map(item => this.modifyData(item))
 
       this.setState({playList: newData})
       //   console.log(newData)
@@ -57,9 +57,9 @@ class EditorPicks extends Component {
 
     return (
       <>
-        <h5 className="playlist-heading">Editor Picks</h5>
+        <h5 className="playlist-heading">Genres & Moods</h5>
 
-        <ul className="category-pick">
+        <ul className="editors-pick">
           {playList.map(item => (
             <HomeItem key={item.id} playListData={item} type="playlist" />
           ))}
@@ -68,7 +68,7 @@ class EditorPicks extends Component {
     )
   }
 
-  renderCategoriesPicks = () => {
+  renderEditorPicks = () => {
     const {fetchStatus} = this.state
 
     switch (fetchStatus) {
@@ -91,8 +91,8 @@ class EditorPicks extends Component {
   }
 
   render() {
-    return <>{this.renderCategoriesPicks()}</>
+    return <>{this.renderEditorPicks()}</>
   }
 }
 
-export default EditorPicks
+export default Categories
