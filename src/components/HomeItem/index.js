@@ -14,8 +14,15 @@ const HomeItem = props => {
     altVal = 'new release album'
   }
 
+  let linkVal
+  if (type === 'category') {
+    linkVal = `/category/${id}/playlists`
+  } else {
+    linkVal = `/${type}/${id}`
+  }
+
   return (
-    <Link to={`/${type}/${id}`} className="link-item">
+    <Link to={linkVal} className="link-item">
       <li className="home-item">
         <img src={imageUrl} alt={altVal} className="item-image" />
         <p className="item-name">{name}</p>

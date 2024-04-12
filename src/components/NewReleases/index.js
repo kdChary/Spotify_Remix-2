@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import './index.css'
 import Loading from '../LoadingView'
 import HomeItem from '../HomeItem'
+import Failure from '../FailurePage'
 
 const apiStateConst = {
   initial: 'INITIAL',
@@ -79,11 +80,7 @@ class NewReleases extends Component {
         return <>{this.renderPlaylist()}</>
 
       case apiStateConst.failure:
-        return (
-          <>
-            <h1>hello!!</h1>
-          </>
-        )
+        return <Failure method={this.getNewReleases()} />
 
       default:
         return null

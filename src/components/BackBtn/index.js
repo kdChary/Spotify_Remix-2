@@ -1,4 +1,5 @@
 import {FaArrowLeft} from 'react-icons/fa'
+import {withRouter} from 'react-router-dom'
 
 import './index.css'
 
@@ -15,4 +16,4 @@ const BackBtn = props => {
   )
 }
 
-export default BackBtn
+export default withRouter(BackBtn)

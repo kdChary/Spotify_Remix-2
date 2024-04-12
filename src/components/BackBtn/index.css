@@ -24,3 +24,8 @@
   left: 0;
   justify-content: flex-end;
 }
+@media (max-width: 767px) {
+  .back-btn {
+    display: none;
+  }
+}
