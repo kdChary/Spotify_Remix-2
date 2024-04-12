@@ -1,3 +1,5 @@
+import './index.css'
+
 const Loading = () => (
   <div className="loader-view" data-testid="loader">
     <img
