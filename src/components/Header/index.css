@@ -14,7 +14,7 @@
 
 .navbar-lg {
   width: 10%;
-  height: 100vh;
+  min-height: 100vh;
 
   background-color: #040306;
   display: none;

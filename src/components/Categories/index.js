@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import moment from 'moment'
 
 import './index.css'
 import Loading from '../LoadingView'
@@ -28,8 +29,9 @@ class Categories extends Component {
 
   getEditorPicks = async () => {
     this.setState({fetchStatus: apiStateConst.inProgress})
+    const timestamp = moment(new Date()).format('YYYY-MM-DDTHH:00:00')
 
-    const url = ' https://apis2.ccbp.in/spotify-clone/categories'
+    const url = `https://apis2.ccbp.in/spotify-clone/categories?country=IN&timestamp=${timestamp}`
     const token = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
