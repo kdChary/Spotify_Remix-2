@@ -7,7 +7,7 @@ const CategoryItem = props => {
   const {id, name, imageUrl, tracks} = itemData
 
   return (
-    <Link to={`/album/${id}`} className="link-item">
+    <Link to={`/playlist/${id}`} className="link-item">
       <li className="category-item">
         <img className="category-item-image" src={imageUrl} alt="category" />
         <div className="category-details-sm">
